@@ -5,7 +5,7 @@ const Header = () => {
     const [toggle, setToggle] = useState<boolean>(false);
 
     return (
-        <div className=" bg-[#F4F6F8] h-[100vh]">
+        <div className="">
           <div
             style={{ backgroundImage: "url(assets/mobile/bg-pattern-header.svg)" }}
             className=" w-full h-[136px] bg-cover bg-center "
