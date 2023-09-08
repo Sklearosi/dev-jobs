@@ -3,15 +3,24 @@ import { MainPageType } from "../types/mainPage.d";
 
 interface MainProps {
   mainPage: MainPageType[];
+  setPage: React.Dispatch<React.SetStateAction<number>>;
+  page: number;
 }
 
-const Main: React.FC<MainProps> = ({ mainPage }) => {
+const Main: React.FC<MainProps> = ({ mainPage, setPage, page}) => {
+
+  const loadMore = () => {
+    setPage(page + 1)
+    console.log(page);
+    
+  }
+
   return (
-    <div className="  bg-[#F4F6F8]">
+    <div className="  bg-[#F4F6F8] pb-10">
       <ul className="mt-20 w-[87%] m-auto grid gap-[40px]">
-        {mainPage.map((jobs) => {
+        {mainPage.map((jobs, index) => {
           return (
-            <li key={jobs.id} className=" bg-white rounded-xl  h-[228px]">
+            <li key={index} className=" bg-white rounded-xl  h-[250px]">
                 <div style={{backgroundColor: jobs.logoBackground}} className=" w-[50px] h-[50px] rounded-[14px] flex justify-center items-center -mt-[24px] ml-7 ">
               <img src={jobs.logo} alt="" />
               </div>
@@ -29,6 +38,7 @@ const Main: React.FC<MainProps> = ({ mainPage }) => {
           );
         })}
       </ul>
+      <button className=" w-[141px] h-[48px] m-auto mt-5 bg-[#5964E0]  text-white block rounded-xl" onClick={loadMore}>Load More</button>
     </div>
   );
 };
