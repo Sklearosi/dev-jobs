@@ -12,6 +12,8 @@ function App() {
   const [search, setSearch] = useState<string>("");
   const [allElements, setAllElements] = useState<MainPageType[]>([])
   const [popUp, setPopUp] = useState<boolean>(false)
+  const [filter, setFilter] = useState<string>('')
+  const [fullTime, setFullTime] = useState<boolean>(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,10 +42,10 @@ function App() {
   
   return ( 
     <div className={`bg-[#F4F6F8] h-full`}>
-      <Popup popUp={popUp} setPopUp={setPopUp}/>
+      <Popup popUp={popUp} setPopUp={setPopUp} setFilter={setFilter} setFullTime={setFullTime} fullTime={fullTime}/>
       <div className={` ${popUp ? " blur-md pointer-events-none " : null} `}>
       <Header setSearch={setSearch} setPopUp={setPopUp} />
-      <Main mainPage={mainPage} setPage={setPage} allElements={allElements}  page={page} search={search} />
+      <Main filter={filter} mainPage={mainPage} setPage={setPage} allElements={allElements}  page={page} search={search} fullTime={fullTime} />
       </div>
     </div>
   );
